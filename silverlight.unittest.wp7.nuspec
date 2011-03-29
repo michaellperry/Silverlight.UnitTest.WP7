@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>silverlight.unittest.wp7</id>
+    <version>3.0.31115.2022</version>
+    <authors>Jeff Wilcox</authors>
+    <owners>Michael L Perry</owners>
+    <description>Silverlight unit testing framework for Windows Phone 7</description>
+    <licenseUrl>http://www.jeff.wilcox.name/2010/05/sl3-utf-bits/</licenseUrl>
+    <projectUrl>http://www.jeff.wilcox.name/2010/05/sl3-utf-bits/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <language>en-US</language>
+    <tags>silverlight unit test wp7 phone</tags>
+  </metadata>
+</package>
