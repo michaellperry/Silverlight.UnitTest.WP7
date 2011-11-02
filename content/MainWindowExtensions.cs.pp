@@ -2,17 +2,28 @@ using System.Windows;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Silverlight.Testing;
+using Microsoft.Silverlight.Testing.UnitTesting.Metadata;
 
 namespace $rootnamespace$
 {
     public static class MainWindowExtensions
     {
-        public static void StartTestRunner(this PhoneApplicationPage mainPage)
+        /// <summary>
+        /// Call this method from the Loaded event in MainPage
+        /// </summary>
+        /// <param name="testProvider">Optional test provider implementation. If omitted the default MsTest provider will be used</param>
+        public static void StartTestRunner(this PhoneApplicationPage mainPage, IUnitTestProvider testProvider = null)
         {
             SystemTray.IsVisible = false;
-            var testPage = UnitTestSystem.CreateTestPage() as IMobileTestPage;
+
+            if (testProvider != null)
+            {
+                UnitTestSystem.RegisterUnitTestProvider(testProvider);
+            }
+
+            var testPage = (IMobileTestPage)UnitTestSystem.CreateTestPage();
             mainPage.BackKeyPress += (x, xe) => xe.Cancel = testPage.NavigateBack();
-            (Application.Current.RootVisual as PhoneApplicationFrame).Content = testPage;
+            ((PhoneApplicationFrame)Application.Current.RootVisual).Content = testPage;
         }
     }
 }
